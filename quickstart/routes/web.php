@@ -29,7 +29,7 @@ Route::get('/a', function () {
  });
 
 // xoa 1 tasks
- Route::delete('/tasks/{task}',function(tasks $task)
+ Route::delete('/delete_/{task}',function(tasks $task)
 {
 	$task->delete();
 	return redirect('/');
