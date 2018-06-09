@@ -10,7 +10,27 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Task;
+use Illuminate\Http\Request;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/a', function () {
+    return view('tasks');
+});
+
+ Route::get('/','HomeController@getValue') ;
+ 
+ // add 1 tasks
+ Route::post('/tasks',function(Request $request){
+
+ 	$task = new Task();
+      $task->name = $request->name;
+     $task->save();
+     return redirect('/');
+ });
+
+// xoa 1 tasks
+ Route::delete('/tasks/{task}',function(tasks $task)
+{
+	$task->delete();
+	return redirect('/');
 });
